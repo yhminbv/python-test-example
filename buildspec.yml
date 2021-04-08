@@ -12,9 +12,10 @@ phases:
       - python -m xmlrunner discover -t . --output-file reports/results.xml 
     finally:
       - echo Test done... 
-  reports:
-      python-test:
+reports:
+  python-test:
       files:
        - 'reports/results.xml'
       discard-paths: false
+      file-format: JUNITXML
     
