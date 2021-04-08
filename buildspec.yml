@@ -1,0 +1,20 @@
+version: 0.2
+run-as: root
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+  build:
+    commands:
+      - echo Running test...
+      - pip install unittest-xml-reporting
+      - mkdir reports
+      - python -m xmlrunner discover -t . --output-file reports/results.xml 
+    finally:
+      - echo Test done... 
+  reports:
+      python-test:
+      files:
+       - 'reports/results.xml'
+      discard-paths: false
+    
